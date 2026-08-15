@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox vs Grid — Same Content, Two Layouts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <span class="logo">&lt;/&gt; layout<span class="logo-accent">.compare</span></span>
+      <nav class="crumbs" aria-label="Section navigation">
+        <a href="#flex-section">flex</a>
+        <a href="#grid-section">grid</a>
+        <a href="#verdict">verdict</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <section class="intro">
+      <p class="eyebrow">/* same five tiles, two different engines */</p>
+      <h1>Flexbox vs Grid</h1>
+      <p class="intro-copy">Same markup, same five tiles — rendered once with flex and once with grid, so you can see exactly how each one decides where things land.</p>
+    </section>
+
+    <section class="demo" id="flex-section">
+      <div class="demo-head">
+        <span class="demo-index">A</span>
+        <div>
+          <h2>Flexbox version</h2>
+          <p class="demo-sub">one-dimensional flow — items wrap based on available space</p>
+        </div>
+      </div>
+
+      <ul class="flex-gallery">
+        <li class="tile">1</li>
+        <li class="tile">2</li>
+        <li class="tile">3</li>
+        <li class="tile">4</li>
+        <li class="tile">5</li>
+      </ul>
+
+      <p class="note">Flex lines items up and wraps — good when you don't care exactly how many end up per row.</p>
+      <p class="label">display: flex &nbsp;·&nbsp; flex-wrap: wrap &nbsp;·&nbsp; gap: 16px</p>
+    </section>
+
+    <section class="demo" id="grid-section">
+      <div class="demo-head">
+        <span class="demo-index">B</span>
+        <div>
+          <h2>Grid version</h2>
+          <p class="demo-sub">two-dimensional flow — rows and columns are fixed in advance</p>
+        </div>
+      </div>
+
+      <ul class="grid-gallery">
+        <li class="tile">1</li>
+        <li class="tile">2</li>
+        <li class="tile">3</li>
+        <li class="tile">4</li>
+        <li class="tile">5</li>
+      </ul>
+
+      <p class="note">Grid fixes exact rows and columns — good when the layout itself matters (dashboards, page structure).</p>
+      <p class="label">display: grid &nbsp;·&nbsp; grid-template-columns: repeat(3, 1fr) &nbsp;·&nbsp; gap: 16px</p>
+    </section>
+
+    <section class="demo verdict" id="verdict">
+      <div class="demo-head">
+        <span class="demo-index">?</span>
+        <div>
+          <h2>When to use which</h2>
+          <p class="demo-sub">pick the tool that matches the direction of the problem</p>
+        </div>
+      </div>
+
+      <ul class="verdict-list">
+        <li>
+          <strong class="tag tag-flex">Flexbox</strong>
+          <span>navbars, button groups, form rows — one direction, content decides size</span>
+        </li>
+        <li>
+          <strong class="tag tag-grid">Grid</strong>
+          <span>full page layout, photo galleries, dashboards — two directions, you decide size</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>built with plain html &amp; css — inspect the source to see every rule in context</p>
+  </footer>
+
+</body>
+</html>
