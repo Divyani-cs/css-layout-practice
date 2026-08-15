@@ -1,0 +1,351 @@
+/* ===================================================
+   tokens
+=================================================== */
+:root {
+  --bg: #16171f;
+  --surface: #1e202c;
+  --surface-raised: #262838;
+  --line: #34364a;
+  --text: #e7e7ee;
+  --text-muted: #8b8ea3;
+  --accent: #5eead4;      /* teal — structure / content */
+  --accent-amber: #fbbf24; /* padding */
+  --accent-rose: #fb7185;  /* border */
+  --accent-violet: #a78bfa; /* margin */
+
+  --mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 32px 32px;
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+/* ===================================================
+   topbar
+=================================================== */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(22, 23, 31, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.02em;
+}
+
+.logo-accent { color: var(--accent); }
+
+.crumbs {
+  display: flex;
+  gap: 20px;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+.crumbs a {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.crumbs a:hover,
+.crumbs a:focus-visible { color: var(--accent); }
+
+/* ===================================================
+   page / intro
+=================================================== */
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.intro {
+  padding: 64px 0 48px;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  margin: 0 0 12px;
+}
+
+.intro h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+
+.intro-copy {
+  max-width: 46ch;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* ===================================================
+   shared demo shell
+=================================================== */
+.demo {
+  scroll-margin-top: 88px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.demo-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.demo-index {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+
+.demo-head h2 {
+  margin: 0 0 4px;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+.demo-sub {
+  margin: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
+.label {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: 24px 0 0;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+}
+
+/* ===================================================
+   1. box model — nested rings show each layer
+=================================================== */
+.box-stage {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.box-margin,
+.box-border,
+.box-padding {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-margin {
+  background: rgba(167, 139, 250, 0.12);
+  border: 1px dashed rgba(167, 139, 250, 0.5);
+  padding: 30px;
+}
+
+.box-border {
+  background: rgba(251, 113, 133, 0.1);
+  border: 4px solid var(--accent-rose);
+  border-radius: 2px;
+}
+
+.box-padding {
+  background: rgba(251, 191, 36, 0.12);
+  padding: 20px;
+}
+
+.box-content {
+  background: var(--accent);
+  color: #0b1017;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 22px 40px;
+  border-radius: 4px;
+}
+
+.ring-tag {
+  position: absolute;
+  top: -11px;
+  left: 12px;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  padding: 2px 8px;
+  border-radius: 100px;
+  background: var(--bg);
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+
+.ring-margin { color: var(--accent-violet); }
+.ring-border { color: var(--accent-rose); }
+.ring-padding { color: var(--accent-amber); }
+
+/* ===================================================
+   2. flexbox — stat cards
+=================================================== */
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  flex: 1 1 180px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.card-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.card-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* ===================================================
+   3. grid — dashboard layout
+=================================================== */
+.grid-wrap {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  grid-template-rows: 64px 200px 56px;
+  grid-template-areas:
+    "head head"
+    "side body"
+    "foot foot";
+  gap: 12px;
+}
+
+.g-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin: 0;
+}
+
+.head { grid-area: head; color: var(--accent); }
+.side { grid-area: side; color: var(--accent-violet); }
+.body { grid-area: body; color: var(--accent-amber); }
+.foot { grid-area: foot; color: var(--accent-rose); }
+
+/* ===================================================
+   footer
+=================================================== */
+.page-footer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+}
+
+.page-footer p {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   responsive
+=================================================== */
+@media (max-width: 640px) {
+  .demo { padding: 24px 20px; }
+  .grid-wrap {
+    grid-template-columns: 1fr;
+    grid-template-rows: 56px 100px 200px 56px;
+    grid-template-areas:
+      "head"
+      "side"
+      "body"
+      "foot";
+  }
+  .crumbs { display: none; }
+}
+
+/* ===================================================
+   accessibility
+=================================================== */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card { transition: none; }
+}
